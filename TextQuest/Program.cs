@@ -181,7 +181,6 @@ class Program
                 
             }
             return operNum;
-            Console.WriteLine();
         }
     }
 }
