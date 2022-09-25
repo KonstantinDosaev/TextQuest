@@ -31,28 +31,35 @@ class Program
             roomOne.GetText();
 
             int operNum = OperNum(3);
-            if (operNum == 1)
+            switch (operNum)
             {
-                Console.Clear();
-                Console.Write(" Введите цифровой ключ: ");
-                int passExit;
-                while (!int.TryParse(Console.ReadLine(), out passExit)) ;
-                Console.Clear() ;
-                if (passExit == 1973)
-                {Console.WriteLine(" Поздравляю вы выбрались из лаборатории!!!!");}
-                else
-                {
-                   Console.WriteLine(" КЛЮЧ НЕ ВЕРЕН");
-                   Console.ReadLine() ; 
-                   RoomOne();
-                }
-            }
-            else if (operNum == 2) RoomTwo();
-            else if (operNum == 3)
-            {
-                Console.WriteLine("\tВ этой комнате нет ничего полезного");
-                Console.ReadLine();
-                RoomOne();
+                case 1:
+                    {
+                        Console.Clear();
+                        Console.Write(" Введите цифровой ключ: ");
+                        int passExit;
+                        while (!int.TryParse(Console.ReadLine(), out passExit)) ;
+                        Console.Clear();
+                        if (passExit == 1973)
+                        { Console.WriteLine(" Поздравляю вы выбрались из лаборатории!!!!"); }
+                        else
+                        {
+                            Console.WriteLine(" КЛЮЧ НЕ ВЕРЕН");
+                            Console.ReadLine();
+                            RoomOne();
+                        }
+
+                        break;
+                    }
+
+                case 2:
+                    RoomTwo();
+                    break;
+                case 3:
+                    Console.WriteLine("\tВ этой комнате нет ничего полезного");
+                    Console.ReadLine();
+                    RoomOne();
+                    break;
             }
 
             Console.ReadLine();
@@ -68,12 +75,16 @@ class Program
                 roomTwo.masage_2 = " 2: Уйти обратно в первую комнату";
                 roomTwo.GetText();
                 int operNum = OperNum(2);
-                if (operNum == 1) 
-                { 
-                    flashLight = true;
-                    RoomTwo();
+                switch (operNum)
+                {
+                    case 1:
+                        flashLight = true;
+                        RoomTwo();
+                        break;
+                    case 2:
+                        RoomOne();
+                        break;
                 }
-                else if (operNum == 2) RoomOne();
             }
             else if(flashLight == true && animal == true)
             {
@@ -110,10 +121,18 @@ class Program
                 roomTwo.masage_3 = " 2: Уйти в первую комнату";
                 roomTwo.GetText();
                 int operNum = OperNum(3);
-                if (operNum == 1) RoomFour();
-
-                else if (operNum == 2) RoomThre();
-                else if (operNum == 3) RoomOne();
+                switch (operNum)
+                {
+                    case 1:
+                        RoomFour();
+                        break;
+                    case 2:
+                        RoomThre();
+                        break;
+                    case 3:
+                        RoomOne();
+                        break;
+                }
 
             }
 
@@ -131,15 +150,18 @@ class Program
             roomThre.GetText();
 
             int operNum = OperNum(2);
-            if (operNum == 1) RoomTwo();
-
-            else if (operNum == 2)
+            switch (operNum)
             {
-                Console.Clear();
-                Console.Write(" Вы нашли тяжелую трубу возможно животное испугается. ");
-                arms = true;
-                Console.ReadLine();
-                RoomFour();
+                case 1:
+                    RoomTwo();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write(" Вы нашли тяжелую трубу возможно животное испугается. ");
+                    arms = true;
+                    Console.ReadLine();
+                    RoomFour();
+                    break;
             }
             Console.ReadLine();
         }
@@ -154,15 +176,18 @@ class Program
             roomFour.GetText();
 
             int operNum = OperNum(2);
-            if (operNum == 1) RoomTwo();
-
-            else if (operNum == 2)
+            switch (operNum)
             {
-                Console.Clear();
-                Console.Write(" Вы нашли блокнот на котором записаны четыре цифры: 1973\n Похоже это код от двери. ");
-                Console.ReadLine();
-                RoomFour();
+                case 1:
+                    RoomTwo();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write(" Вы нашли блокнот на котором записаны четыре цифры: 1973\n Похоже это код от двери. ");
+                    Console.ReadLine();
+                    RoomFour();
 
+                    break;
             }
             Console.ReadLine();
         }
