@@ -28,10 +28,10 @@ class Program
             roomOne.masage_1 = " 1: Выбрать дверь с надписью ВЫХОД";
             roomOne.masage_2 = " 2: Выбрать вторую дверь";
             roomOne.masage_3 = " 3: Осмотреться";
-            roomOne.GetText();
+            roomOne.GetText(3);
 
-            int operNum = OperNum(3);
-            switch (operNum)
+            
+            switch (roomOne.curentArr)
             {
                 case 1:
                     {
@@ -73,9 +73,9 @@ class Program
                 roomTwo.head_2 = " В этой комнате темно, у вас есть фонарик";
                 roomTwo.masage_1 = " 1: Включить фонарик";
                 roomTwo.masage_2 = " 2: Уйти обратно в первую комнату";
-                roomTwo.GetText();
-                int operNum = OperNum(2);
-                switch (operNum)
+                roomTwo.GetText(2);
+                //int operNum = OperNum(2);
+                switch (roomTwo.curentArr)
                 {
                     case 1:
                         flashLight = true;
@@ -92,24 +92,24 @@ class Program
                 roomTwo.masage_1 = " 1: Попробовать пройти через вход с животным";
                 roomTwo.masage_2 = " 2: Пройти в свободный проход с голубым свечением";
                 roomTwo.masage_3 = " 3: Уйти в первую комнату";
-                roomTwo.GetText();
-                int operNum = OperNum(3);
-                if (operNum == 1 && arms == false)
+                roomTwo.GetText(3);
+                //int operNum = OperNum(3);
+                if (roomTwo.curentArr == 1 && arms == false)
                 {
                     Console.Clear();
                     Console.WriteLine("Животное рычит на вас и не пропускает");
                     Console.ReadLine();
                     RoomTwo();
                 }
-                else if (operNum == 1 && arms == true)
+                else if (roomTwo.curentArr == 1 && arms == true)
                 {
                     Console.Clear();
                     Console.WriteLine("Животное испугалось трубы и пропустило вас");
                     Console.ReadLine();
                     RoomFour();
                 }
-                else if (operNum == 2) RoomThre();
-                else if (operNum == 3) RoomOne();
+                else if (roomTwo.curentArr == 2) RoomThre();
+                else if (roomTwo.curentArr == 3) RoomOne();
 
 
             }
@@ -119,9 +119,9 @@ class Program
                 roomTwo.masage_1 = " 1: Пройти через вход с животным";
                 roomTwo.masage_2 = " 2: Пройти в проход с голубым свечением";
                 roomTwo.masage_3 = " 2: Уйти в первую комнату";
-                roomTwo.GetText();
-                int operNum = OperNum(3);
-                switch (operNum)
+                roomTwo.GetText(3);
+                //int operNum = OperNum(3);
+                switch (roomTwo.curentArr)
                 {
                     case 1:
                         RoomFour();
@@ -147,10 +147,10 @@ class Program
             roomThre.head_2 = " Вы в комнате с голубым свечением.";
             roomThre.masage_1 = " 1: Уйти в комнату с животным";
             roomThre.masage_2 = " 2: Осмотреться";
-            roomThre.GetText();
+            roomThre.GetText(3);
 
-            int operNum = OperNum(2);
-            switch (operNum)
+            //int operNum = OperNum(2);
+            switch (roomThre.curentArr)
             {
                 case 1:
                     RoomTwo();
@@ -173,10 +173,10 @@ class Program
             roomFour.head_2 = " Вы вощли в кабтнет с кипами бумаг.";
             roomFour.masage_1 = " 1: Уйти в комнату с животным";
             roomFour.masage_2 = " 2: Осмотреться";
-            roomFour.GetText();
+            roomFour.GetText(2);
 
-            int operNum = OperNum(2);
-            switch (operNum)
+            //int operNum = OperNum(2);
+            switch (roomFour.curentArr)
             {
                 case 1:
                     RoomTwo();
