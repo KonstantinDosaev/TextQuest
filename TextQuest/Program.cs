@@ -25,15 +25,12 @@ class Program
             Room roomOne = new Room();
             roomOne.head = "Первая комната";
             roomOne.head_2 = " В этой комнате есть две двери: \n дверь со светящейся надписью ВЫХОД, \n и открытая дверь за которой темно.";
-            roomOne.masage_1 = " 1: Выбрать дверь с надписью ВЫХОД";
-            roomOne.masage_2 = " 2: Выбрать вторую дверь";
-            roomOne.masage_3 = " 3: Осмотреться";
-            roomOne.GetText(3);
+            string[] menu = { "1: Выбрать дверь с надписью ВЫХОД", "2: Выбрать вторую дверь", "3: Осмотреться" };
+            roomOne.GetText(menu);
 
-            
             switch (roomOne.curentArr)
             {
-                case 1:
+                case 0:
                     {
                         Console.Clear();
                         Console.Write(" Введите цифровой ключ: ");
@@ -52,10 +49,10 @@ class Program
                         break;
                     }
 
-                case 2:
+                case 1:
                     RoomTwo();
                     break;
-                case 3:
+                case 2:
                     Console.WriteLine("\tВ этой комнате нет ничего полезного");
                     Console.ReadLine();
                     RoomOne();
@@ -64,6 +61,8 @@ class Program
 
             Console.ReadLine();
         }
+
+        
         //222222222222222222222222222222222222222222222222222222222222222222
         static void RoomTwo()
         {   Room roomTwo = new Room();
@@ -71,17 +70,15 @@ class Program
             if (flashLight == false)
             { 
                 roomTwo.head_2 = " В этой комнате темно, у вас есть фонарик";
-                roomTwo.masage_1 = " 1: Включить фонарик";
-                roomTwo.masage_2 = " 2: Уйти обратно в первую комнату";
-                roomTwo.GetText(2);
-                //int operNum = OperNum(2);
+                string[] menu = { "1: Включить фонарик", "2: Уйти обратно в первую комнату" };
+                roomTwo.GetText(menu);
                 switch (roomTwo.curentArr)
                 {
-                    case 1:
+                    case 0:
                         flashLight = true;
                         RoomTwo();
                         break;
-                    case 2:
+                    case 1:
                         RoomOne();
                         break;
                 }
@@ -89,47 +86,43 @@ class Program
             else if(flashLight == true && animal == true)
             {
                 roomTwo.head_2 = " В свете фонаря вы увидели неизвестное животное и два выхода\n первый свободен там горит голубой свет,\n второй загораживает животное ";
-                roomTwo.masage_1 = " 1: Попробовать пройти через вход с животным";
-                roomTwo.masage_2 = " 2: Пройти в свободный проход с голубым свечением";
-                roomTwo.masage_3 = " 3: Уйти в первую комнату";
-                roomTwo.GetText(3);
-                //int operNum = OperNum(3);
-                if (roomTwo.curentArr == 1 && arms == false)
+                string[] menu = { "1: Попробовать пройти через вход с животным",
+                                "2: Пройти в свободный проход с голубым свечением", 
+                                "3: Уйти в первую комнату" };
+                roomTwo.GetText(menu);
+                if (roomTwo.curentArr == 0 && arms == false)
                 {
                     Console.Clear();
                     Console.WriteLine("Животное рычит на вас и не пропускает");
                     Console.ReadLine();
                     RoomTwo();
                 }
-                else if (roomTwo.curentArr == 1 && arms == true)
+                else if (roomTwo.curentArr == 0 && arms == true)
                 {
                     Console.Clear();
                     Console.WriteLine("Животное испугалось трубы и пропустило вас");
                     Console.ReadLine();
                     RoomFour();
                 }
-                else if (roomTwo.curentArr == 2) RoomThre();
-                else if (roomTwo.curentArr == 3) RoomOne();
+                else if (roomTwo.curentArr == 1) RoomThre();
+                else if (roomTwo.curentArr == 2) RoomOne();
 
 
             }
             else if (flashLight == true && animal == false)
             {
                 roomTwo.head_2 = " Вы в комнате с животным, но у вас есть труба и оно боится\n  ";
-                roomTwo.masage_1 = " 1: Пройти через вход с животным";
-                roomTwo.masage_2 = " 2: Пройти в проход с голубым свечением";
-                roomTwo.masage_3 = " 2: Уйти в первую комнату";
-                roomTwo.GetText(3);
-                //int operNum = OperNum(3);
+                string[] menu = { "1: Пройти через вход с животным", "2: Пройти в проход с голубым свечением", "2: Уйти в первую комнату" };
+                roomTwo.GetText(menu);
                 switch (roomTwo.curentArr)
                 {
-                    case 1:
+                    case 0:
                         RoomFour();
                         break;
-                    case 2:
+                    case 1:
                         RoomThre();
                         break;
-                    case 3:
+                    case 2:
                         RoomOne();
                         break;
                 }
@@ -145,22 +138,19 @@ class Program
             Room roomThre = new Room();
             roomThre.head = "Третья комната";
             roomThre.head_2 = " Вы в комнате с голубым свечением.";
-            roomThre.masage_1 = " 1: Уйти в комнату с животным";
-            roomThre.masage_2 = " 2: Осмотреться";
-            roomThre.GetText(3);
-
-            //int operNum = OperNum(2);
+            string[] menu = { "1: Уйти в комнату с животным", "2: Осмотреться" };
+            roomThre.GetText(menu);
             switch (roomThre.curentArr)
             {
-                case 1:
+                case 0:
                     RoomTwo();
                     break;
-                case 2:
+                case 1:
                     Console.Clear();
                     Console.Write(" Вы нашли тяжелую трубу возможно животное испугается. ");
                     arms = true;
                     Console.ReadLine();
-                    RoomFour();
+                    RoomThre();
                     break;
             }
             Console.ReadLine();
@@ -171,17 +161,14 @@ class Program
             Room roomFour = new Room();
             roomFour.head = "Четвертая комната";
             roomFour.head_2 = " Вы вощли в кабтнет с кипами бумаг.";
-            roomFour.masage_1 = " 1: Уйти в комнату с животным";
-            roomFour.masage_2 = " 2: Осмотреться";
-            roomFour.GetText(2);
-
-            //int operNum = OperNum(2);
+            string[] menu = { "1: Уйти в комнату с животным", "2: Осмотреться" };
+            roomFour.GetText(menu);
             switch (roomFour.curentArr)
             {
-                case 1:
+                case 0:
                     RoomTwo();
                     break;
-                case 2:
+                case 1:
                     Console.Clear();
                     Console.Write(" Вы нашли блокнот на котором записаны четыре цифры: 1973\n Похоже это код от двери. ");
                     Console.ReadLine();
@@ -194,19 +181,6 @@ class Program
 
 
 
-
-        static int OperNum(int quantityMasage)
-        {
-            int operNum;
-            while (!int.TryParse(Console.ReadLine(), out operNum)) ;
-            while (operNum > quantityMasage)
-            {
-                Console.WriteLine("выбирайте из списка");
-                while (!int.TryParse(Console.ReadLine(), out operNum)) ;
-                
-            }
-            return operNum;
-        }
     }
 }
 
