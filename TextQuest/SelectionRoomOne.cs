@@ -45,6 +45,14 @@
 
             Console.ReadLine();
         }
+
+        private void HandleConsole(string mesage)
+        {
+            Console.Clear();
+            Console.Write(mesage);
+            Console.ReadLine();
+        }
     }
+
 }
 

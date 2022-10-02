@@ -4,9 +4,8 @@
     {
         private bool _flashLight;
         private bool _arms;
-
         public void SelectRoomTwo()
-        { 
+        {
             var room = new Room
             {
                 Head = "Вторая комната."
@@ -60,60 +59,6 @@
             Console.ReadLine();
         }
 
-        public void SelectRoomThree()
-        {
-            var room = new Room
-            {
-                Head = "Третья комната",
-                Head2 = " Вы в комнате с голубым свечением."
-            };
-            string[] menu = { "1: Уйти в комнату с животным", "2: Осмотреться" };
-            room.GetText(menu);
-            switch (room.CurrentArr)
-            {
-                case 0:
-                    SelectRoomTwo();
-                    break;
-                case 1:
-                    HandleConsole(" Вы нашли тяжелую трубу возможно животное испугается. ");
-                    _arms = true;
-                    SelectRoomThree();
-                    break;
-            }
-            Console.ReadLine();
-        }
-
-        public void SelectRoomFour()
-        {
-            var roomFour = new Room
-            {
-                Head = "Четвертая комната",
-                Head2 = " Вы вощли в кабтнет с кипами бумаг."
-            };
-            string[] menu = { "1: Уйти в комнату с животным", "2: Осмотреться" };
-            roomFour.GetText(menu);
-            switch (roomFour.CurrentArr)
-            {
-                case 0:
-                    SelectRoomTwo();
-                    break;
-                case 1:
-                    HandleConsole(" Вы нашли блокнот на котором записаны четыре цифры: 1973\n Похоже это код от двери. ");
-                    SelectRoomFour();
-
-                    break;
-            }
-            Console.ReadLine();
-        }
-
-
-        private void HandleConsole(string mesage)
-        {
-            Console.Clear();
-            Console.Write(mesage);
-            Console.ReadLine();
-        }
-        
     }
 }
 
