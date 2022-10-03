@@ -9,19 +9,15 @@ internal class Room
 
     public void GetText(string[] menu)
     {
-
-
         while (true)
         {
-            var arr = '>';
-
             Console.Clear();
             Console.WriteLine($"\t\t\t{Head}\n\n");
             Console.WriteLine($"{Head2}\n\n");
             for (var i = 0; i < menu.Length; i++)
             {
                 Console.WriteLine(CurrentArr == i 
-                    ? $" {arr} {menu[i]}" 
+                    ? $" > {menu[i]}" 
                     : $"   {menu[i]}");
             }
             Console.WriteLine("\n\n");
